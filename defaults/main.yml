@@ -1,0 +1,6 @@
+---
+# defaugalts file for ssh-key-rotation
+is_exclusive: no
+should_manage_dir: no
+authorized_keys_path: '{{ ansible_env.HOME }}/.ssh/authorized_keys'
+passphrase: 83g!8bfu5M5yy84x

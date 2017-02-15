@@ -1,0 +1,26 @@
+---
+# tasks file for ssh-key-rotation
+- name: Generate New ssh Keys
+  command:
+    ssh-keygen -t rsa
+      -N "{{ passphrase }}" -q
+      -f {{ lookup('env','HOME') + private_key_path }} -y
+  when: inventory_hostname == play_hosts[0]
+  delegate_to: localhost
+
+- name: Set Authorized key(s) to the authorized keys file
+  become: yes
+  become_user: root
+  authorized_key:
+    exclusive: '{{ is_exclusive }}'
+    user: '{{ host_user }}'
+    state: present
+    path: '{{ authorized_keys_path }}'
+    manage_dir: '{{ should_manage_dir }}'
+    key: "{{ lookup('file', lookup('env','HOME') + public_key_path)}}"
+
+- debug:
+    msg: "{{ play_hosts }}"
+
+- name: Test if the new ssh key is allowed to make connections
+  set_fact:  ansible_private_ssh_key={{ lookup('file', lookup('env','HOME') + private_key_path)}}
