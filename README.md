@@ -41,6 +41,15 @@ ssh_host_user: ubuntu
 # The location to store the keys to. (warning it should not begin with /)
 ssh_key_path: ".ssh/new-ssh-key"
 
+# if you already have generated you keys add the following variables.
+
+# Set to true by default
+generate_new_key: True
+ssh_connection_key: "some key"
+
+# add this if you want to add deployment key for your server,
+ssh_deployment_key: "deployment key"
+
 ```
 
 The above variables and values are the default inputs to this role. You can check the default folder. Make sure you upate them with your own.

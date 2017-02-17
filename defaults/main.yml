@@ -1,5 +1,5 @@
 ---
-# defaugalts file for ssh-key-rotation
+# defaults file for ssh-key-rotation
 is_exclusive: no
 should_manage_dir: no
 authorized_keys_path: '{{ ansible_env.HOME }}/.ssh/authorized_keys'
@@ -8,4 +8,5 @@ ssh_key_bits: 2048
 ssh_key_comment: domain@example.com
 ssh_host_user: vagrant
 ssh_key_path: ".ssh/new-ssh-key"
+generate_new_key: True
 

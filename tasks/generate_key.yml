@@ -1,0 +1,17 @@
+# tasks file for ssh-key-rotation
+- name: Generate a new ssh Key
+  command:
+    ssh-keygen
+      -t rsa
+      -b {{ ssh_key_bits }}
+      -N "{{ passphrase }}" -q
+      -f {{ lookup('env','HOME')}}/{{ ssh_key_path }}
+      -C {{ ssh_key_comment }}
+  when: inventory_hostname == play_hosts[0]
+  args:
+    creates: "{{ lookup('env','HOME') + '/' + ssh_key_path }}"
+  delegate_to: localhost
+
+- name: Store then value of the ssh key path
+  set_fact:
+    ssh_connection_key: "{{ lookup('file', lookup('env','HOME') + '/' + ssh_key_path + '.pub') }}"
