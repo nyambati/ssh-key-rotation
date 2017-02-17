@@ -28,4 +28,5 @@
     key: "{{ lookup('file', key_path + '.pub') }}"
 
 - name: Test if the new ssh key is allowed to make connections
-  set_fact:  ansible_private_ssh_key={{ lookup('file', key_path)}}
+  shell: ssh {{ssh_host_user }}@{{ inventory_hostname }} "echo success"
+  delegate_to: localhost
