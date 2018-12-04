@@ -1,18 +1,14 @@
+# SSH Key Rotation
 
-# ssh Key Rotation
+# [![Build Status](https://travis-ci.org/nyambati/ssh-key-rotation.svg?branch=master)](https://travis-ci.org/nyambati/ssh-key-rotation)
 
-[![Build Status](https://travis-ci.org/nyambati/ssh-key-rotation.svg?branch=master)](https://travis-ci.org/nyambati/ssh-key-rotation)
-=========
+This is ansible role that enables you to rotate ssh keys on your remote servers. You can find this role on [ansible galaxy](https://galaxy.ansible.com/nyambati/ssh-key-rotation)
 
-This is ansible role that enables you to rotate ssh keys on your remote servers
+## Requirements
 
-Requirements
-------------
+This modules depends on ansible 2.2.X
 
-This modules depeds on ansible 2.2.X
-
-Role Variables
---------------
+## Role Variables
 
 For this role to work it requires the following variables:
 
@@ -49,13 +45,19 @@ ssh_connection_key: "some key"
 
 # add this if you want to add deployment key for your server,
 ssh_deployment_key: "deployment key"
-
 ```
 
 The above variables and values are the default inputs to this role. You can check the default folder. Make sure you upate them with your own.
 
-Example Playbook
-----------------
+Installation
+
+You can install this role from ansible galaxy by running
+
+```bash
+$ ansible-galaxy install nyambati.ssh-key-rotation
+```
+
+## Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
@@ -67,13 +69,13 @@ Including an example of how to use your role (for instance, with variables passe
     host_user: vagrant
     ssh_key_path: .ssh/some-new-secure
   roles:
-    - ssh-key-rotation
+    - nyambati.ssh-key-rotation
 
 
 ```
 
-License
--------
+## License
+
 MIT License
 
 Copyright (c) 2017 Nyambati Thomas <thomasnyambati@gmal.com>
@@ -96,7 +98,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Author Information
-------------------
-Thomas Nyambati <thomasnyambati@gmail.com>
+## Author Information
 
+Thomas Nyambati <thomasnyambati@gmail.com>
